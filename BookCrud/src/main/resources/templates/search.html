@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="thymeleaf.org">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Search</title>
+	</head>
+	<body>
+		<a th:href="'/'">Home</a><br/>
+		<h1>Search for Book</h1>
+		<form action="/search" method="post" th:object="${query}">
+			<input type="text" name="value" th:value="${query.value}"/>
+			<input type="submit" value="Search"/>
+		</form>
+		<br/><br/>
+		<label><b>List of Books from Search: </b></label>
+		<form action="/delbook" method="post" th:object="${bl}">
+		<table>
+			<tr>
+				<td>
+					<input type="submit" value="Delete"/>
+				</td>
+			</tr>
+			<tr>
+				<td>Title</td>
+				<td>Categories</td>
+			</tr>
+			<tr th:each="book : ${bookl}">
+				<td>
+					<input type="checkbox" th:field="*{books}" th:value="${book.id}"/>
+					<a th:href="'/books/' + ${book.id}" th:text="${book.title}" />
+				</td>
+				<td>
+					<a th:each="category : ${book.categories}" th:text="${category.title}" th:href="@{/categories/{id}(id=${category.id})}" />
+				</td>
+			</tr>
+		</table>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="thymeleaf.org">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Update Category</title>
+	</head>
+	<body>
+		<a th:href="'/categories/' + ${category.get().id}">Go Back</a>
+		<form action="/updatecategory" method="post" th:object="${cp}">
+		<table>
+			<tr>
+				<td>Title</td>
+				<td>
+					<input type="text" name="title" th:value="${category.get().title}"/>
+				</td>
+			</tr>
+			<tr>
+				<td>Description</td>
+				<td>
+					<input type="text" name="description" th:value="${category.get().description}"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="hidden" name="id" th:value="${category.get().id}">
+					<input type="submit" value="Submit"/>
+				</td>
+			</tr>
+		</table>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="thymeleaf.org">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Category Details</title>
+	</head>
+	<body>
+		<a th:href="'/'">Home</a><br/>
+		<a th:href="'/categories'">Category List</a>
+		<a th:href="@{__${#httpServletRequest.requestURI}__/edit}">Edit Category</a>
+		<h1 th:text="${category.get().title}"/>
+		<p th:text="${category.get().description}"></p>
+		<br/><br/>
+		<label><b>List of Books in Category: </b></label>
+		<form th:action="'/remcategory/'+${category.get().id}" method="post" th:object="${bl}">
+		<table>
+			<tr>
+				<td>
+					<input type="submit" value="Remove"/>
+				</td>
+			</tr>
+			<tr>
+				<td>Title</td>
+			</tr>
+			<tr th:each="book : ${books}">
+				<td>
+					<input type="checkbox" th:field="*{books}" th:value="${book.id}"/>
+					<a th:href="@{/books/{id}(id=${book.id})}" th:text="${book.title}" />
+				</td>
+			</tr>
+		</table>
+		</form>
+	</body>
+</html>

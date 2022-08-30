@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="thymeleaf.org">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Categories List</title>
+	</head>
+	<body>
+		<a th:href="'/'">Home</a><br/>
+		<a th:href="'/createcategory'">Create New Category</a>
+		<h1>Categories List</h1>
+		<form action="delcategory" method="post" th:object="${cl}">
+		<table>
+			<tr>
+				<td>
+					<input type="submit" value="Delete"/>
+				</td>
+			</tr>
+			<tr>
+				<td>Title</td>
+			</tr>
+			<tr th:each="category : ${categories}">
+				<td>
+					<input type="checkbox" th:field="*{categories}" th:value="${category.id}"/>
+					<a th:href="@{__${#httpServletRequest.requestURI}__/{id}(id=${category.id})}" th:text="${category.title}" />
+				</td>
+			</tr>
+		</table>
+		</form>
+	</body>
+</html>

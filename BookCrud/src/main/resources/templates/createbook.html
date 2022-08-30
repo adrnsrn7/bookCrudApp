@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="thymeleaf.org">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Create Book</title>
+	</head>
+	<body>
+		<a th:href="'/books'">Go Back</a>
+		<form action="savebook" method="post" th:object="${bp}">
+		<table>
+			<tr>
+				<td>Title</td>
+				<td>
+					<input type="text" name="title"/>
+				</td>
+			</tr>
+			<tr>
+				<td>Description</td>
+				<td>
+					<input type="text" name="description"/>
+				</td>
+			</tr>
+			<tr>
+				<td>Categories</td>
+				<td>
+					<li th:each="category : ${allcat}">
+						<input type="checkbox" th:field="*{categories}" th:value="${category.id}"/>
+						<label th:text="${category.title}"/>
+					</li>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="submit" value="Submit"/>
+				</td>
+			</tr>
+		</table>
+		</form>
+	</body>
+</html>
