@@ -1,0 +1,12 @@
+open application.properties document and change connection to your mssql connection details
+
+BookCrud.war deployment file for external tomcat uses the following connection details:
+mssql name and instance:	desktop-ntukk91\sqlexpress
+username:				sa
+password:				password123
+
+Opening in Spring Tool Suite 4:
+> Open Projects from File System...
+> Import source: Project Location
+> Select BookCrud
+> Run Application will use internal tomcat from the project dependency
