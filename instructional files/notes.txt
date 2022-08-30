@@ -1,5 +1,6 @@
 open application.properties document and change connection to your mssql connection details
 
+war file will not deploy on Tomcat 10 versions. Use Tomcat 8.
 BookCrud.war deployment file for external tomcat uses the following connection details:
 mssql name and instance:	desktop-ntukk91\sqlexpress
 username:				sa
